@@ -1,0 +1,112 @@
+Retail Mart Management.
+DESCRIPTION
+A data analyst of a retail shop, Happy Mart, wants to store the product details, the customer details, and the order details to provide unparalleled insights about customer behavior and product stock details daily.
+Objective:
+The design of the database helps to easily evaluate and identify the performance of the shop to increase the daily sales.
+Task to be performed:
+•	Write a query to create a database named SQL basics.
+•	Write a query to select the database SQL basics.
+•	Write a query to create a product table with fields as product code, product name, price, stock and category, customer table with the fields as customer id, customer name, customer location, and customer phone number and, sales table with the fields as date, order number, product code, product name, quantity, and price.
+•	Write a query to insert values into the tables.
+•	Write a query to add two new columns such as S_no and categories to the sales table.
+•	Write a query to change the column type of stock in the product table to varchar.
+•	Write a query to change the table name from customer-to-customer details.
+•	Write a query to drop the columns S_no and categories from the sales table.
+•	Write a query to display order id, customer id, order date, price, and quantity from the sales table.
+•	Write a query to display all the details in the product table if the category is stationary.
+•	Write a query to display a unique category from the product table.
+•	Write a query to display the sales details if quantity is greater than 2 and price is lesser than 500 from the sales table.
+•	Write a query to display the customer’s name if the name ends with a.
+•	Write a query to display the product details in descending order of the price.
+•	Write a query to display the product code and category from similar categories that are greater than or equal to 2.
+•	Write a query to display the order number and the customer name to combine the results of the order and the customer tables including duplicate rows.
+
+CREATE DATABASE SQL_BASICS;
+
+USE SQL_BASICS;
+
+CREATE TABLE product (
+	product_code varchar(20),
+    product_name varchar(20),
+    price float,
+    stock float,
+    category varchar(20)
+);
+
+CREATE TABLE customer (
+	customer_id int,
+	customer_name varchar(20),
+    customer_loc varchar(20),
+    customer_phone int
+);
+
+CREATE TABLE sales(
+	sale_date date,
+    order_number int,
+    product_code varchar(20),
+    product_name varchar(20),
+    quantity int,
+    price float
+);
+
+
+INSERT INTO PRODUCT VALUES(
+'EAR-1234','iPhone 13 Pro Max','1000', '12','Phone'
+);
+
+select * from product;
+
+INSERT INTO CUSTOMER VALUES(
+'12345', 'JOHN WICK', 'EDEN PRAIRIE', '789654123'
+);
+
+
+SELECT * FROM CUSTOMER;
+
+INSERT INTO SALES VALUES(
+sysdate(),
+'7895623',
+'EAR-1234',
+'iPhone 13 Pro Max',
+'1',
+'1127'
+);
+
+SELECT * FROM SALES;
+
+	ALTER TABLE SALES
+    ADD S_NO INT,
+    ADD CATEGORIES VARCHAR(25)
+    ;
+	
+	ALTER TABLE PRODUCT
+MODIFY STOCK VARCHAR(20);
+
+RENAME TABLE CUSTOMER TO CUSTOMER_DETAILS;
+
+ALTER TABLE SALES
+DROP COLUMN S_NO,
+DROP COLUMN CATEGORIES;
+	
+SELECT ORDER_NUMBER,SALE_DATE, PRICE, QUANTITY FROM SALES;	
+
+SELECT * FROM PRODUCT
+WHERE CATEGORY ='Stationary'
+;
+
+select distinct category from product;
+
+select * from sales
+where qty > 2 
+and price < 500
+;
+
+select * from customer_details
+where customer_name LIKE '%a'
+;
+
+select * from product
+order by price desc
+;
+
+select order_no, c_name from sales;
