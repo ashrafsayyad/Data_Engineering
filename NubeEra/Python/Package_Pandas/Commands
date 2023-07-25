@@ -1,0 +1,7 @@
+pip install virtualenv
+
+virtualenv .envOscar
+
+activate ( under environment\Script)
+
+pip install -r requirements.txt
