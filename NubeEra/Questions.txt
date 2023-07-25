@@ -1,0 +1,6 @@
+1. Take a list and show all items with numbers.
+
+Example list is AA, BB, CC then display like 
+1 : AA
+2 : BB
+3 : CC
